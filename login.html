@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Formu</title>
+</head>
+<body>
+
+    <h2>Giriş Formu</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <div class="flash-message {% if 'error' in message %}error{% elif 'success' in message %}success{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('login') }}">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Giriş Yap</button>
+    </form>
+
+</body>
+<style>
+    /* Örnek CSS kodu */
+    .flash-message {
+        padding: 10px;
+        margin-bottom: 10px;
+        color: white;
+        font-weight: bold;
+        /* Renklerinizi ve stilinizi burada tanımlayabilirsiniz */
+    }
+
+    .error {
+        background-color: red;
+    }
+
+    .success {
+        background-color: green;
+    }
+</style>
+</html>

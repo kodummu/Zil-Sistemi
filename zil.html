@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm System</title>
+</head>
+<body>
+    <h1>Alarm System</h1>
+
+    {% if alarm_set %}
+        <p>Alarm set successfully!</p>
+    {% endif %}
+
+    <form action="/set_alarm" method="post">
+        <label for="hour">Hour:</label>
+        <input type="number" name="hour" min="0" max="23" required>
+
+        <label for="minute">Minute:</label>
+        <input type="number" name="minute" min="0" max="59" required>
+
+        <button type="submit">Set Alarm</button>
+    </form>
+</body>
+</html>
